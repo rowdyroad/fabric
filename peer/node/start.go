@@ -308,9 +308,11 @@ func registerChaincodeSupport(grpcServer *grpc.Server, ccEpFunc ccEndpointFunc) 
 
 	//get chaincode startup timeout
 	ccStartupTimeout := viper.GetDuration("chaincode.startuptimeout")
+	fmt.Println("##### Startup timeout", ccStasrtupTimeout);	
 	if ccStartupTimeout < time.Duration(5)*time.Second {
 		logger.Warningf("Invalid chaincode startup timeout value %s (should be at least 5s); defaulting to 5s", ccStartupTimeout)
 		ccStartupTimeout = time.Duration(5) * time.Second
+		fmt.Println("#### set default", ccStasrtupTimeout);	
 	} else {
 		logger.Debugf("Chaincode startup timeout value set to %s", ccStartupTimeout)
 	}

@@ -51,10 +51,11 @@ var mainCmd = &cobra.Command{
 		// check for CORE_LOGGING_LEVEL environment variable, which should override
 		// all other log settings
 		loggingSpec := viper.GetString("logging_level")
-
+		fmt.Println("loggingSpec:", loggingSpec);
 		if loggingSpec == "" {
 			// if CORE_LOGGING_LEVEL not set, use the value for 'peer' from core.yaml
 			loggingSpec = viper.GetString("logging.peer")
+			fmt.Println("not spec, read from peer config loggingSpec:", loggingSpec);
 		}
 		flogging.InitFromSpec(loggingSpec)
 

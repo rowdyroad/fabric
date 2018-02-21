@@ -499,7 +499,7 @@ func (chaincodeSupport *ChaincodeSupport) launchAndWaitForRegister(ctxt context.
 			err = fmt.Errorf("registration failed for %s(networkid:%s,peerid:%s,tx:%s)", canName, chaincodeSupport.peerNetworkID, chaincodeSupport.peerID, cccid.TxID)
 		}
 	case <-time.After(chaincodeSupport.ccStartupTimeout):
-		err = fmt.Errorf("Timeout expired while starting chaincode %s(networkid:%s,peerid:%s,tx:%s)", canName, chaincodeSupport.peerNetworkID, chaincodeSupport.peerID, cccid.TxID)
+		err = fmt.Errorf("Timeout expired while starting chaincode %s(networkid:%s,peerid:%s,tx:%s) %v", canName, chaincodeSupport.peerNetworkID, chaincodeSupport.peerID, cccid.TxID, chaincodeSupport.ccStartupTimeout)
 	}
 	if err != nil {
 		chaincodeLogger.Debugf("stopping due to error while launching %s", err)

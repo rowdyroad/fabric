@@ -18,7 +18,7 @@ package sw
 import (
 	"errors"
 
-	"crypto/sha256"
+	"github.com/rowdyroad/hellgost/crypto/sha256"
 
 	"github.com/hyperledger/fabric/bccsp"
 )

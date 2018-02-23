@@ -17,8 +17,9 @@ package csp
 
 import (
 	"crypto"
-	"crypto/ecdsa"
-	"crypto/x509"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/bccsp/factory"

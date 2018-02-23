@@ -17,10 +17,11 @@ package sw
 
 import (
 	"crypto/elliptic"
-	"crypto/sha256"
-	"crypto/sha512"
 	"fmt"
 	"hash"
+
+	"github.com/rowdyroad/hellgost/crypto/sha256"
+	"github.com/rowdyroad/hellgost/crypto/sha512"
 
 	"golang.org/x/crypto/sha3"
 )

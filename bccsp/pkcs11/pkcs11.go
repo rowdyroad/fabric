@@ -7,17 +7,17 @@ SPDX-License-Identifier: Apache-2.0
 package pkcs11
 
 import (
-	"crypto/ecdsa"
 	"crypto/elliptic"
-	"crypto/sha256"
 	"encoding/asn1"
 	"encoding/hex"
 	"fmt"
 	"math/big"
 	"sync"
 
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
+	"github.com/rowdyroad/hellgost/crypto/sha256"
+
 	"github.com/miekg/pkcs11"
-	"github.com/op/go-logging"
 )
 
 func loadLib(lib, pin, label string) (*pkcs11.Ctx, uint, *pkcs11.SessionHandle, error) {

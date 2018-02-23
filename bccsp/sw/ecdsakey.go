@@ -16,11 +16,12 @@ limitations under the License.
 package sw
 
 import (
-	"crypto/ecdsa"
-	"crypto/x509"
 	"fmt"
 
-	"crypto/sha256"
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
+	"github.com/rowdyroad/hellgost/crypto/x509"
+
+	"github.com/rowdyroad/hellgost/crypto/sha256"
 
 	"errors"
 

@@ -17,14 +17,14 @@ package sw
 
 import (
 	"crypto/elliptic"
-	"crypto/sha256"
-	"crypto/sha512"
 	"hash"
 	"reflect"
 
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/common/errors"
 	"github.com/hyperledger/fabric/common/flogging"
+	"github.com/rowdyroad/hellgost/crypto/sha256"
+	"github.com/rowdyroad/hellgost/crypto/sha512"
 	"golang.org/x/crypto/sha3"
 )
 

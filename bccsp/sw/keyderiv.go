@@ -17,8 +17,9 @@ limitations under the License.
 package sw
 
 import (
-	"crypto/ecdsa"
 	"fmt"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 
 	"errors"
 	"math/big"

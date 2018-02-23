@@ -17,16 +17,18 @@ limitations under the License.
 package comm
 
 import (
-	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/tls"
-	"crypto/x509"
 	"encoding/pem"
 	"errors"
 	"fmt"
 	"math/big"
 	"os"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
+
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"github.com/hyperledger/fabric/common/util"
 	gutil "github.com/hyperledger/fabric/gossip/util"

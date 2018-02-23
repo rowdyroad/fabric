@@ -20,13 +20,14 @@ import (
 	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
-	"crypto/x509"
-	"crypto/x509/pkix"
 	"encoding/asn1"
 	"math/big"
 	"net"
 	"testing"
 	"time"
+
+	"github.com/rowdyroad/hellgost/crypto/x509"
+	"github.com/rowdyroad/hellgost/crypto/x509/pkix"
 
 	"github.com/hyperledger/fabric/bccsp/sw"
 	"github.com/stretchr/testify/assert"

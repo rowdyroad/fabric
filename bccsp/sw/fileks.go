@@ -24,11 +24,12 @@ import (
 	"errors"
 	"strings"
 
-	"crypto/ecdsa"
 	"crypto/rsa"
 	"encoding/hex"
 	"fmt"
 	"path/filepath"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/bccsp/utils"

@@ -16,12 +16,13 @@ limitations under the License.
 package pkcs11
 
 import (
-	"crypto/ecdsa"
 	"crypto/elliptic"
 	"encoding/asn1"
 	"errors"
 	"fmt"
 	"math/big"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 
 	"github.com/hyperledger/fabric/bccsp"
 )

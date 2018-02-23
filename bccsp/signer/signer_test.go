@@ -16,11 +16,12 @@ limitations under the License.
 package signer
 
 import (
-	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
 	"errors"
 	"testing"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 
 	"github.com/hyperledger/fabric/bccsp/mocks"
 	"github.com/hyperledger/fabric/bccsp/utils"

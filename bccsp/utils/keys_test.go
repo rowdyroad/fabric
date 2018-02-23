@@ -17,14 +17,15 @@ limitations under the License.
 package utils
 
 import (
-	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/rsa"
-	"crypto/x509"
 	"encoding/asn1"
 	"encoding/pem"
 	"testing"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"github.com/stretchr/testify/assert"
 )

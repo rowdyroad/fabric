@@ -16,12 +16,13 @@ limitations under the License.
 package pkcs11
 
 import (
-	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
 	"encoding/asn1"
 	"encoding/hex"
 	"testing"
+
+	"github.com/hellgost/crypto/ecdsa"
 
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/miekg/pkcs11"

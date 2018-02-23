@@ -8,15 +8,16 @@ package msp
 
 import (
 	"bytes"
-	"crypto/ecdsa"
-	"crypto/x509"
-	"crypto/x509/pkix"
 	"encoding/asn1"
 	"encoding/pem"
 	"errors"
 	"fmt"
 	"math/big"
 	"time"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
+	"github.com/rowdyroad/hellgost/crypto/x509"
+	"github.com/rowdyroad/hellgost/crypto/x509/pkix"
 
 	"github.com/hyperledger/fabric/bccsp/sw"
 )

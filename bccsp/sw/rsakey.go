@@ -17,10 +17,11 @@ package sw
 
 import (
 	"crypto/rsa"
-	"crypto/x509"
 	"fmt"
 
-	"crypto/sha256"
+	"github.com/rowdyroad/hellgost/crypto/x509"
+
+	"github.com/rowdyroad/hellgost/crypto/sha256"
 
 	"errors"
 

@@ -16,11 +16,12 @@ limitations under the License.
 package ca_test
 
 import (
-	"crypto/ecdsa"
-	"crypto/x509"
 	"os"
 	"path/filepath"
 	"testing"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"github.com/hyperledger/fabric/common/tools/cryptogen/ca"
 	"github.com/hyperledger/fabric/common/tools/cryptogen/csp"

@@ -18,14 +18,9 @@ package sw
 import (
 	"bytes"
 	"crypto"
-	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/rsa"
-	"crypto/sha256"
-	"crypto/sha512"
-	"crypto/x509"
-	"crypto/x509/pkix"
 	"encoding/asn1"
 	"fmt"
 	"hash"
@@ -34,6 +29,12 @@ import (
 	"os"
 	"testing"
 	"time"
+
+	"github.com/hellgost/crypto/ecdsa"
+	"github.com/hellgost/crypto/sha256"
+	"github.com/hellgost/crypto/sha512"
+	"github.com/hellgost/crypto/x509"
+	"github.com/hellgost/crypto/x509/pkix"
 
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/bccsp/signer"

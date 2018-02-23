@@ -17,14 +17,15 @@ package ca
 
 import (
 	"crypto"
-	"crypto/ecdsa"
 	"crypto/rand"
-	"crypto/x509"
-	"crypto/x509/pkix"
 	"encoding/pem"
 	"math/big"
 	"os"
 	"time"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
+	"github.com/rowdyroad/hellgost/crypto/x509"
+	"github.com/rowdyroad/hellgost/crypto/x509/pkix"
 
 	"path/filepath"
 

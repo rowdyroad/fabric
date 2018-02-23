@@ -17,10 +17,11 @@ limitations under the License.
 package sw
 
 import (
-	"crypto/sha256"
 	"errors"
 	"reflect"
 	"testing"
+
+	"github.com/hellgost/crypto/sha256"
 
 	mocks2 "github.com/hyperledger/fabric/bccsp/mocks"
 	"github.com/hyperledger/fabric/bccsp/sw/mocks"

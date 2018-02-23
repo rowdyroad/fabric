@@ -19,8 +19,9 @@ package pkcs11
 import (
 	"crypto/rand"
 	"crypto/rsa"
-	"crypto/x509"
 	"testing"
+
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/bccsp/utils"

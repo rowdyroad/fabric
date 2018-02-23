@@ -16,10 +16,11 @@ limitations under the License.
 package pkcs11
 
 import (
-	"crypto/ecdsa"
-	"crypto/x509"
 	"errors"
 	"fmt"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"github.com/hyperledger/fabric/bccsp"
 )

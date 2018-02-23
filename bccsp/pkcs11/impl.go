@@ -16,15 +16,16 @@ limitations under the License.
 package pkcs11
 
 import (
-	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rsa"
-	"crypto/sha256"
-	"crypto/x509"
 	"errors"
 	"fmt"
 	"math/big"
 	"os"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
+	"github.com/rowdyroad/hellgost/crypto/sha256"
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/bccsp/sw"

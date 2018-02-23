@@ -17,13 +17,14 @@ limitations under the License.
 package sw
 
 import (
-	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
-	"crypto/sha256"
-	"crypto/x509"
 	"math/big"
 	"testing"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
+	"github.com/rowdyroad/hellgost/crypto/sha256"
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"github.com/stretchr/testify/assert"
 )

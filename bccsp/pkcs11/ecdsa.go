@@ -17,7 +17,9 @@ package pkcs11
 
 import (
 	"crypto/elliptic"
+	"encoding/asn1"
 	"encoding/hex"
+	"fmt"
 	"math/big"
 
 	"github.com/hyperledger/fabric/bccsp"
@@ -37,6 +39,24 @@ var (
 	}
 )
 
+type ECDSASignature struct {
+	R, S *big.Int
+}
+
+func MarshalECDSASignature(r, s *big.Int) ([]byte, error) {
+	return asn1.Marshal(ECDSASignature{r, s})
+}
+
+func UnmarshalECDSASignature(raw []byte) (*big.Int, *big.Int, error) {
+	// Unmarshal
+	sig := new(ECDSASignature)
+	_, err := asn1.Unmarshal(raw, sig)
+	if err != nil {
+		return nil, nil, fmt.Errorf("Failed unmashalling signature [%s]", err)
+	}
+	return sig.R, sig.S, nil
+}
+
 func (csp *impl) signECDSA(k ecdsaPrivateKey, digest []byte, opts bccsp.SignerOpts) (signature []byte, err error) {
 	pub, err := k.PublicKey()
 	if err != nil {
@@ -47,11 +67,22 @@ func (csp *impl) signECDSA(k ecdsaPrivateKey, digest []byte, opts bccsp.SignerOp
 	if err != nil {
 		panic(nil)
 	}
-
-	return hellgost.GetClient().Sign(hex.EncodeToString(data), digest)
+	sign, err := hellgost.GetClient().Sign(hex.EncodeToString(data), digest)
+	if err != nil {
+		panic(nil)
+	}
+	r := new(big.Int)
+	r.SetBytes(sign)
+	s := big.NewInt(1)
+	return MarshalECDSASignature(r, s)
 }
 
 func (csp *impl) verifyECDSA(k ecdsaPublicKey, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
+	r, _, err := UnmarshalECDSASignature(signature)
+	if err != nil {
+		return false, fmt.Errorf("Failed unmashalling signature [%s]", err)
+	}
+
 	pub, err := k.PublicKey()
 	if err != nil {
 		panic(nil)
@@ -61,5 +92,5 @@ func (csp *impl) verifyECDSA(k ecdsaPublicKey, signature, digest []byte, opts bc
 	if err != nil {
 		panic(nil)
 	}
-	return hellgost.GetClient().Verify(hex.EncodeToString(data), digest, signature)
+	return hellgost.GetClient().Verify(hex.EncodeToString(data), digest, r.Bytes())
 }

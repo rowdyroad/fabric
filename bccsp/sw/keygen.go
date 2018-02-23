@@ -22,21 +22,59 @@ import (
 	"crypto/rand"
 	"crypto/rsa"
 	"fmt"
+	"io"
+	"math/big"
+	mathRand "math/rand"
 
 	"github.com/hyperledger/fabric/bccsp"
+	"github.com/hyperledger/fabric/bccsp/hellgost"
 )
+
+var one = new(big.Int).SetInt64(1)
+
+func randFieldElement(c elliptic.Curve, rand io.Reader) (k *big.Int, err error) {
+	params := c.Params()
+	b := make([]byte, params.BitSize/8+8)
+	_, err = io.ReadFull(rand, b)
+	if err != nil {
+		return
+	}
+
+	k = new(big.Int).SetBytes(b)
+	n := new(big.Int).Sub(params.N, one)
+	k.Mod(k, n)
+	k.Add(k, one)
+	return
+}
 
 type ecdsaKeyGenerator struct {
 	curve elliptic.Curve
 }
 
 func (kg *ecdsaKeyGenerator) KeyGen(opts bccsp.KeyGenOpts) (k bccsp.Key, err error) {
-	privKey, err := ecdsa.GenerateKey(kg.curve, rand.Reader)
+	hgc := hellgost.GetClient()
+	priv := new(ecdsa.PrivateKey)
+
+	priv.PublicKey.X = big.NewInt(mathRand.Int63())
+	priv.PublicKey.Y = big.NewInt(mathRand.Int63())
+
+	ret := &ecdsaPrivateKey{priv}
+	pub, err := ret.PublicKey()
 	if err != nil {
-		return nil, fmt.Errorf("Failed generating ECDSA key for [%v]: [%s]", kg.curve, err)
+		panic(err)
 	}
 
-	return &ecdsaPrivateKey{privKey}, nil
+	data, err := pub.Bytes()
+	if err != nil {
+		panic(err)
+	}
+
+	err = hgc.GenKey(string(data))
+	if err != nil {
+		return nil, err
+	}
+
+	return ret, nil
 }
 
 type aesKeyGenerator struct {

@@ -16,19 +16,12 @@ limitations under the License.
 package pkcs11
 
 import (
-	"crypto/ecdsa"
 	"crypto/elliptic"
-	"encoding/asn1"
-	"errors"
-	"fmt"
 	"math/big"
 
 	"github.com/hyperledger/fabric/bccsp"
+	"github.com/hyperledger/fabric/bccsp/hellgost"
 )
-
-type ecdsaSignature struct {
-	R, S *big.Int
-}
 
 var (
 	// curveHalfOrders contains the precomputed curve group orders halved.
@@ -43,78 +36,29 @@ var (
 	}
 )
 
-func marshalECDSASignature(r, s *big.Int) ([]byte, error) {
-	return asn1.Marshal(ecdsaSignature{r, s})
-}
-
-func unmarshalECDSASignature(raw []byte) (*big.Int, *big.Int, error) {
-	// Unmarshal
-	sig := new(ecdsaSignature)
-	_, err := asn1.Unmarshal(raw, sig)
-	if err != nil {
-		return nil, nil, fmt.Errorf("Failed unmashalling signature [%s]", err)
-	}
-
-	// Validate sig
-	if sig.R == nil {
-		return nil, nil, errors.New("Invalid signature. R must be different from nil.")
-	}
-	if sig.S == nil {
-		return nil, nil, errors.New("Invalid signature. S must be different from nil.")
-	}
-
-	if sig.R.Sign() != 1 {
-		return nil, nil, errors.New("Invalid signature. R must be larger than zero")
-	}
-	if sig.S.Sign() != 1 {
-		return nil, nil, errors.New("Invalid signature. S must be larger than zero")
-	}
-
-	return sig.R, sig.S, nil
-}
-
 func (csp *impl) signECDSA(k ecdsaPrivateKey, digest []byte, opts bccsp.SignerOpts) (signature []byte, err error) {
-	r, s, err := csp.signP11ECDSA(k.ski, digest)
+	pub, err := k.PublicKey()
 	if err != nil {
-		return nil, err
+		panic(nil)
 	}
 
-	// check for low-S
-	halfOrder, ok := curveHalfOrders[k.pub.pub.Curve]
-	if !ok {
-		return nil, fmt.Errorf("Curve not recognized [%s]", k.pub.pub.Curve)
+	data, err := pub.Bytes()
+	if err != nil {
+		panic(nil)
 	}
 
-	// is s > halfOrder Then
-	if s.Cmp(halfOrder) == 1 {
-		// Set s to N - s that will be then in the lower part of signature space
-		// less or equal to half order
-		s.Sub(k.pub.pub.Params().N, s)
-	}
-
-	return marshalECDSASignature(r, s)
+	return hellgost.GetClient().Sign(string(data), digest)
 }
 
 func (csp *impl) verifyECDSA(k ecdsaPublicKey, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
-	r, s, err := unmarshalECDSASignature(signature)
+	pub, err := k.PublicKey()
 	if err != nil {
-		return false, fmt.Errorf("Failed unmashalling signature [%s]", err)
+		panic(nil)
 	}
 
-	// check for low-S
-	halfOrder, ok := curveHalfOrders[k.pub.Curve]
-	if !ok {
-		return false, fmt.Errorf("Curve not recognized [%s]", k.pub.Curve)
+	data, err := pub.Bytes()
+	if err != nil {
+		panic(nil)
 	}
-
-	// If s > halfOrder Then
-	if s.Cmp(halfOrder) == 1 {
-		return false, fmt.Errorf("Invalid S. Must be smaller than half the order [%s][%s].", s, halfOrder)
-	}
-
-	if csp.softVerify {
-		return ecdsa.Verify(k.pub, digest, r, s), nil
-	} else {
-		return csp.verifyP11ECDSA(k.ski, digest, r, s, k.pub.Curve.Params().BitSize/8)
-	}
+	return hellgost.GetClient().Verify(string(data), digest, signature)
 }

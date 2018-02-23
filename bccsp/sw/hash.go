@@ -20,6 +20,7 @@ import (
 	"hash"
 
 	"github.com/hyperledger/fabric/bccsp"
+	"github.com/hyperledger/fabric/bccsp/hellgost"
 )
 
 type hasher struct {
@@ -27,9 +28,7 @@ type hasher struct {
 }
 
 func (c *hasher) Hash(msg []byte, opts bccsp.HashOpts) (hash []byte, err error) {
-	h := c.hash()
-	h.Write(msg)
-	return h.Sum(nil), nil
+	return hellgost.GetClient().Hash512(msg)
 }
 
 func (c *hasher) GetHash(opts bccsp.HashOpts) (h hash.Hash, err error) {

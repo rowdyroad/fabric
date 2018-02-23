@@ -53,7 +53,15 @@ type ecdsaKeyGenerator struct {
 
 func (kg *ecdsaKeyGenerator) KeyGen(opts bccsp.KeyGenOpts) (k bccsp.Key, err error) {
 	hgc := hellgost.GetClient()
+
+	x, err := randFieldElement(kg.curve, rand.Reader)
+	if err != nil {
+		return nil, err
+	}
+
 	priv := new(ecdsa.PrivateKey)
+	priv.PublicKey.Curve = kg.curve
+	priv.D = x
 
 	priv.PublicKey.X = big.NewInt(mathRand.Int63())
 	priv.PublicKey.Y = big.NewInt(mathRand.Int63())

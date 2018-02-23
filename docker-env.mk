@@ -49,6 +49,7 @@ endif
 
 DRUN = docker run -i --rm $(DOCKER_RUN_FLAGS) \
 	-v $(abspath .):/opt/gopath/src/$(PKGNAME) \
+	-v $(GOPATH)/src/github.com/rowdyroad/hellgost:/opt/gopath/src/github.com/rowdyroad/hellgost \
 	-w /opt/gopath/src/$(PKGNAME)
 
 DBUILD = docker build $(DOCKER_BUILD_FLAGS)

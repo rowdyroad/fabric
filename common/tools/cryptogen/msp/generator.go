@@ -16,13 +16,13 @@ limitations under the License.
 package msp
 
 import (
-	"crypto/x509"
 	"encoding/pem"
 	"os"
 	"path/filepath"
 
 	"encoding/hex"
 
+	"github.com/rowdyroad/hellgost/crypto/x509"
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/bccsp/factory"
 	"github.com/hyperledger/fabric/common/tools/cryptogen/ca"

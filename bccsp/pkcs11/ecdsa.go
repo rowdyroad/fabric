@@ -17,6 +17,7 @@ package pkcs11
 
 import (
 	"crypto/elliptic"
+	"encoding/hex"
 	"math/big"
 
 	"github.com/hyperledger/fabric/bccsp"
@@ -47,7 +48,7 @@ func (csp *impl) signECDSA(k ecdsaPrivateKey, digest []byte, opts bccsp.SignerOp
 		panic(nil)
 	}
 
-	return hellgost.GetClient().Sign(string(data), digest)
+	return hellgost.GetClient().Sign(hex.EncodeToString(data), digest)
 }
 
 func (csp *impl) verifyECDSA(k ecdsaPublicKey, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
@@ -60,5 +61,5 @@ func (csp *impl) verifyECDSA(k ecdsaPublicKey, signature, digest []byte, opts bc
 	if err != nil {
 		panic(nil)
 	}
-	return hellgost.GetClient().Verify(string(data), digest, signature)
+	return hellgost.GetClient().Verify(hex.EncodeToString(data), digest, signature)
 }

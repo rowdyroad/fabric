@@ -21,10 +21,10 @@ import (
 	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/rsa"
+	"encoding/hex"
 	"fmt"
 	"io"
 	"math/big"
-	mathRand "math/rand"
 
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/bccsp/hellgost"
@@ -63,8 +63,7 @@ func (kg *ecdsaKeyGenerator) KeyGen(opts bccsp.KeyGenOpts) (k bccsp.Key, err err
 	priv.PublicKey.Curve = kg.curve
 	priv.D = x
 
-	priv.PublicKey.X = big.NewInt(mathRand.Int63())
-	priv.PublicKey.Y = big.NewInt(mathRand.Int63())
+	priv.PublicKey.X, priv.PublicKey.Y = kg.curve.ScalarBaseMult(x.Bytes())
 
 	ret := &ecdsaPrivateKey{priv}
 	pub, err := ret.PublicKey()
@@ -77,7 +76,7 @@ func (kg *ecdsaKeyGenerator) KeyGen(opts bccsp.KeyGenOpts) (k bccsp.Key, err err
 		panic(err)
 	}
 
-	err = hgc.GenKey(string(data))
+	err = hgc.GenKey(hex.EncodeToString(data))
 	if err != nil {
 		return nil, err
 	}

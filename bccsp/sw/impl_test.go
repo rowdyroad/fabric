@@ -17,10 +17,8 @@ package sw
 
 import (
 	"bytes"
-	"crypto"
 	"crypto/elliptic"
 	"crypto/rand"
-	"crypto/rsa"
 	"encoding/asn1"
 	"fmt"
 	"hash"
@@ -29,6 +27,9 @@ import (
 	"os"
 	"testing"
 	"time"
+
+	"github.com/rowdyroad/hellgost/crypto"
+	"github.com/rowdyroad/hellgost/crypto/rsa"
 
 	"github.com/hellgost/crypto/ecdsa"
 	"github.com/hellgost/crypto/sha256"

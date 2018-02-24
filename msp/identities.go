@@ -7,19 +7,19 @@ SPDX-License-Identifier: Apache-2.0
 package msp
 
 import (
-	"crypto"
 	"crypto/rand"
-	"crypto/x509"
 	"encoding/hex"
 	"encoding/pem"
 	"errors"
 	"fmt"
 
+	"github.com/rowdyroad/hellgost/crypto"
+	"github.com/rowdyroad/hellgost/crypto/x509"
+
 	"github.com/golang/protobuf/proto"
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/common/flogging"
 	"github.com/hyperledger/fabric/protos/msp"
-	"github.com/op/go-logging"
 )
 
 var mspIdentityLogger = flogging.MustGetLogger("msp/identity")

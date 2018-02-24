@@ -22,7 +22,6 @@ limitations under the License.
 package main
 
 import (
-	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
 	"encoding/pem"
@@ -31,6 +30,8 @@ import (
 	"math/big"
 	"os"
 	"time"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 
 	"github.com/rowdyroad/hellgost/crypto/x509"
 	"github.com/rowdyroad/hellgost/crypto/x509/pkix"

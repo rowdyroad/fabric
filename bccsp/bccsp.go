@@ -17,8 +17,9 @@ limitations under the License.
 package bccsp
 
 import (
-	"crypto"
 	"hash"
+
+	"github.com/rowdyroad/hellgost/crypto"
 )
 
 // Key represents a cryptographic key

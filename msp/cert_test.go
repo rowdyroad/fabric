@@ -17,7 +17,6 @@ limitations under the License.
 package msp
 
 import (
-	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
 	"encoding/asn1"
@@ -25,6 +24,8 @@ import (
 	"net"
 	"testing"
 	"time"
+
+	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 
 	"github.com/rowdyroad/hellgost/crypto/x509"
 	"github.com/rowdyroad/hellgost/crypto/x509/pkix"

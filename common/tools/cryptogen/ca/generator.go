@@ -16,12 +16,13 @@ limitations under the License.
 package ca
 
 import (
-	"crypto"
 	"crypto/rand"
 	"encoding/pem"
 	"math/big"
 	"os"
 	"time"
+
+	"github.com/rowdyroad/hellgost/crypto"
 
 	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 	"github.com/rowdyroad/hellgost/crypto/x509"

@@ -17,10 +17,8 @@ package pkcs11
 
 import (
 	"bytes"
-	"crypto"
 	"crypto/elliptic"
 	"crypto/rand"
-	"crypto/rsa"
 	"encoding/asn1"
 	"fmt"
 	"hash"
@@ -30,6 +28,11 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/rowdyroad/hellgost/crypto/rsa"
+
+	logging "github.com/op/go-logging"
+	"github.com/rowdyroad/hellgost/crypto"
 
 	"github.com/hellgost/crypto/ecdsa"
 	"github.com/hellgost/crypto/sha256"

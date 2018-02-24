@@ -17,11 +17,12 @@ package pkcs11
 
 import (
 	"crypto/elliptic"
-	"crypto/rsa"
 	"errors"
 	"fmt"
 	"math/big"
 	"os"
+
+	"github.com/rowdyroad/hellgost/crypto/rsa"
 
 	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 	"github.com/rowdyroad/hellgost/crypto/sha256"

@@ -17,12 +17,13 @@ limitations under the License.
 package sw
 
 import (
-	"crypto"
 	"crypto/rand"
-	"crypto/rsa"
 	"encoding/asn1"
 	"strings"
 	"testing"
+
+	"github.com/rowdyroad/hellgost/crypto"
+	"github.com/rowdyroad/hellgost/crypto/rsa"
 
 	"github.com/rowdyroad/hellgost/crypto/sha256"
 

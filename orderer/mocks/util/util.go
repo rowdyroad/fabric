@@ -8,11 +8,12 @@ package util
 
 import (
 	"crypto/rand"
-	"crypto/rsa"
-	"crypto/x509"
-	"crypto/x509/pkix"
 	"encoding/pem"
 	"math/big"
+
+	"github.com/rowdyroad/hellgost/crypto/rsa"
+	"github.com/rowdyroad/hellgost/crypto/x509"
+	"github.com/rowdyroad/hellgost/crypto/x509/pkix"
 )
 
 // GenerateMockPublicPrivateKeyPairPEM returns public/private key pair encoded

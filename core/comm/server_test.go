@@ -8,7 +8,6 @@ package comm_test
 
 import (
 	"crypto/tls"
-	"crypto/x509"
 	"errors"
 	"fmt"
 	"io"
@@ -19,6 +18,8 @@ import (
 	"sync"
 	"testing"
 	"time"
+
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"github.com/stretchr/testify/assert"
 

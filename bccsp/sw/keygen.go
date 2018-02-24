@@ -19,8 +19,9 @@ package sw
 import (
 	"crypto/elliptic"
 	"crypto/rand"
-	"crypto/rsa"
 	"fmt"
+
+	"github.com/rowdyroad/hellgost/crypto/rsa"
 
 	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 

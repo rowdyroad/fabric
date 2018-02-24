@@ -16,8 +16,9 @@ limitations under the License.
 package sw
 
 import (
-	"crypto/rsa"
 	"fmt"
+
+	"github.com/rowdyroad/hellgost/crypto/rsa"
 
 	"github.com/rowdyroad/hellgost/crypto/x509"
 

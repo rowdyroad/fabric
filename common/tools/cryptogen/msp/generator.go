@@ -16,10 +16,11 @@ limitations under the License.
 package msp
 
 import (
-	"crypto/x509"
 	"encoding/pem"
 	"os"
 	"path/filepath"
+
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"encoding/hex"
 

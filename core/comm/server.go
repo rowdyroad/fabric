@@ -8,12 +8,13 @@ package comm
 
 import (
 	"crypto/tls"
-	"crypto/x509"
 	"encoding/pem"
 	"errors"
 	"fmt"
 	"net"
 	"sync"
+
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"google.golang.org/grpc"
 )

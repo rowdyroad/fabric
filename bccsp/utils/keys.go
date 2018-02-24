@@ -19,11 +19,12 @@ package utils
 import (
 	"crypto/elliptic"
 	"crypto/rand"
-	"crypto/rsa"
 	"encoding/asn1"
 	"encoding/pem"
 	"errors"
 	"fmt"
+
+	"github.com/rowdyroad/hellgost/crypto/rsa"
 
 	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 	"github.com/rowdyroad/hellgost/crypto/x509"

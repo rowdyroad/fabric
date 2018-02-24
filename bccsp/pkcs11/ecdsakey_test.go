@@ -18,8 +18,9 @@ package pkcs11
 
 import (
 	"crypto/rand"
-	"crypto/rsa"
 	"testing"
+
+	"github.com/rowdyroad/hellgost/crypto/rsa"
 
 	"github.com/rowdyroad/hellgost/crypto/x509"
 

@@ -20,8 +20,9 @@ import (
 	"errors"
 	"fmt"
 
-	"crypto/rsa"
 	"reflect"
+
+	"github.com/rowdyroad/hellgost/crypto/rsa"
 
 	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 	"github.com/rowdyroad/hellgost/crypto/x509"

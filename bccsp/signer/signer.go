@@ -16,10 +16,11 @@ limitations under the License.
 package signer
 
 import (
-	"crypto"
 	"errors"
 	"fmt"
 	"io"
+
+	"github.com/rowdyroad/hellgost/crypto"
 
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/bccsp/utils"

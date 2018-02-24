@@ -16,7 +16,7 @@ limitations under the License.
 package csp
 
 import (
-	"crypto"
+	"github.com/rowdyroad/hellgost/crypto"
 
 	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 	"github.com/rowdyroad/hellgost/crypto/x509"

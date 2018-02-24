@@ -8,7 +8,8 @@ package kafka
 
 import (
 	"crypto/tls"
-	"crypto/x509"
+
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"github.com/Shopify/sarama"
 	localconfig "github.com/hyperledger/fabric/orderer/localconfig"

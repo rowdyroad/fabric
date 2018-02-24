@@ -24,10 +24,11 @@ import (
 	"errors"
 	"strings"
 
-	"crypto/rsa"
 	"encoding/hex"
 	"fmt"
 	"path/filepath"
+
+	"github.com/rowdyroad/hellgost/crypto/rsa"
 
 	"github.com/rowdyroad/hellgost/crypto/ecdsa"
 

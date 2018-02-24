@@ -18,9 +18,10 @@ package sw
 
 import (
 	"crypto/rand"
-	"crypto/rsa"
 	"errors"
 	"fmt"
+
+	"github.com/rowdyroad/hellgost/crypto/rsa"
 
 	"github.com/hyperledger/fabric/bccsp"
 )

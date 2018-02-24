@@ -17,10 +17,11 @@ limitations under the License.
 package mocks
 
 import (
-	"crypto"
 	"errors"
 	"hash"
 	"reflect"
+
+	"github.com/rowdyroad/hellgost/crypto"
 
 	"github.com/hyperledger/fabric/bccsp"
 )

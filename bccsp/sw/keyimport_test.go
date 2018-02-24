@@ -18,10 +18,11 @@ package sw
 
 import (
 	"crypto/rand"
-	"crypto/rsa"
 	"errors"
 	"reflect"
 	"testing"
+
+	"github.com/rowdyroad/hellgost/crypto/rsa"
 
 	"github.com/rowdyroad/hellgost/crypto/x509"
 

@@ -8,7 +8,6 @@ package peer_test
 
 import (
 	"crypto/tls"
-	"crypto/x509"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -16,6 +15,8 @@ import (
 	"path/filepath"
 	"testing"
 	"time"
+
+	"github.com/rowdyroad/hellgost/crypto/x509"
 
 	"google.golang.org/grpc/credentials"
 

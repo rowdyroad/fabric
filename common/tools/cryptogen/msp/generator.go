@@ -24,6 +24,7 @@ import (
 
 	"encoding/hex"
 
+	"github.com/rowdyroad/hellgost/crypto/x509"
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/bccsp/factory"
 	"github.com/hyperledger/fabric/common/tools/cryptogen/ca"

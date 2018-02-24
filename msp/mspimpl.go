@@ -17,14 +17,13 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/rowdyroad/hellgost/crypto/x509"
-	"github.com/rowdyroad/hellgost/crypto/x509/pkix"
-
 	"github.com/golang/protobuf/proto"
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/bccsp/factory"
 	"github.com/hyperledger/fabric/bccsp/signer"
 	m "github.com/hyperledger/fabric/protos/msp"
+	"github.com/rowdyroad/hellgost/crypto/x509"
+	"github.com/rowdyroad/hellgost/crypto/x509/pkix"
 )
 
 // This is an instantiation of an MSP that

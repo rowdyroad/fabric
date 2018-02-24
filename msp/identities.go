@@ -20,6 +20,7 @@ import (
 	"github.com/hyperledger/fabric/bccsp"
 	"github.com/hyperledger/fabric/common/flogging"
 	"github.com/hyperledger/fabric/protos/msp"
+	logging "github.com/op/go-logging"
 )
 
 var mspIdentityLogger = flogging.MustGetLogger("msp/identity")
